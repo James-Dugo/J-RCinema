@@ -27,7 +27,7 @@ const getMovies = () => {
     return allMovies
 }
 
-const getmovie = (movieId) => {
+const getMovie = (movieId) => {
     return allMovies.find(movie => movie.id == movieId)
 }
 

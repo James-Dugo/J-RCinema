@@ -4,16 +4,16 @@ export const movieListView = (id, movieArray) => {
     const template = Handlebars.compile(`
       <table>
       <tr>
-      <th>Code</th>
       <th>Title</th>
-      <th>Offering</th>
-      <th>Enrolments</th>
+      <th>Watched</th>
+      <th>Rating</th>
+      <th>Poster</th>
           {{#each movies}}
               <tr>
-                  <td class="movie-code" data-code={{attributes.code}}> {{attributes.code}} </td>
-                  <td> {{attributes.title}} </td>
-                  <td> {{attributes.offering}} </td>
-                  <td> {{attributes.enrolments}} </td>
+                  <td> <a href="#!/movies/{{id}}"> {{attributes.title}}</a> </td>
+                  <td> {{attributes.watched}} </td>
+                  <td> {{attributes.rating}} </td>
+                  <td> <img src="http://localhost:1337{{attributes.poster.data.attributes.formats.thumbnail.url}}"></td>
               </tr>
           {{/each}}
       </table>
@@ -48,17 +48,21 @@ export const homeView = (id,movieArray) => {
 
 export const movieView = (id,movie) => {
     const template = Handlebars.compile (`
-    <h1>Unit: {{movie.attributes.title}}</h1>
+    <h1>{{movie.attributes.title}}</h1>
+    <img src="http://localhost:1337{{movie.attributes.poster.data.attributes.formats.medium.url}}">
     <table>
     <tr>
-    <th>Code</th>
-    <th>Offering</th>
-    <th>Enrolments</th>
+    <th>Genres</th>
+    <th>Watched</th>
+    <th>Rating</th>
+    <th>Movie Length</th>
     <tr>
-        <td> {{movie.attributes.code}} </td>
-        <td> {{movie.attributes.offering}} </td>
-        <td> {{movie.attributes.enrolments}} </td>
+        <td> {{movie.attributes.genres}} </td>
+        <td> {{movie.attributes.watched}} </td>
+        <td> {{movie.attributes.rating}} </td>
+        <td> {{movie.attributes.movieLength}} </td>
     </tr>
+    </table>
     `)
     const target = document.getElementById(id)
     target.innerHTML=template({movie:movie})
