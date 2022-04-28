@@ -1,0 +1,14 @@
+body {
+    color: rgb(29, 51, 29);
+    background-color: rgb(175, 224, 189);
+}
+
+h1 {
+    text-align: center;
+}
+
+.info {
+    width: 200px;
+    border: 10px solid green;
+    margin: auto;
+}

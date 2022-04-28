@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Poster": {
+    "poster": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -25,7 +25,7 @@
         "images"
       ]
     },
-    "Watched": {
+    "watched": {
       "type": "boolean",
       "default": false,
       "required": true
@@ -35,13 +35,12 @@
       "required": true,
       "type": "integer"
     },
-    "genre": {
-      "type": "enumeration",
-      "enum": [
-        "comedy",
-        "horror",
-        "family"
-      ]
+    "genres": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "boolean",
+      "required": true
     }
   }
 }
