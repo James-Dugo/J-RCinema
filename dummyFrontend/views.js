@@ -30,10 +30,10 @@ export const addNewMovieView = (id) => {
 export const movieListView = (id, movieArray) => {
 
     const template = Handlebars.compile(`
-    <button id="action1">S1 Units</button>
-    <button id="action2">S2 Units</button>
-    <button id="action3">All Units</button>
-    <button id="action4">Sorted Units</button>
+    <button id="action1">Button 1</button>
+    <button id="action2">Button 2</button>
+    <button id="action3">Button 3</button>
+    <button id="action4">Button 4</button>
     <table>
         <tr>
             <th>Title</th>
@@ -45,7 +45,7 @@ export const movieListView = (id, movieArray) => {
             <td> <a href="#!/movies/{{id}}"> {{attributes.title}}</a> </td>
             <td> {{attributes.watched}} </td>
             <td> {{attributes.rating}} </td>
-            <td> <img src="http://localhost:1337{{attributes.poster.data.attributes.formats.thumbnail.url}}" width="110" height="155.99"></td>
+            <td> <img src="http://localhost:1337{{attributes.poster.data.attributes.formats.small.url}}" width="110" height="155.99"></td>
         </tr>
         {{/each}}
     </table>
@@ -56,6 +56,7 @@ export const movieListView = (id, movieArray) => {
 }
 
 export const homeView = (id,movieArray) => {
+    console.log(movieArray)
     const template = Handlebars.compile(`
     <h1>Unit Web App</h1>
     
@@ -77,7 +78,7 @@ export const homeView = (id,movieArray) => {
 export const movieView = (id,movie) => {
     const template = Handlebars.compile (`
     <h1>{{movie.attributes.title}}</h1>
-    <img src="{{url}}{{movie.attributes.poster.data.attributes.formats.medium.url}}">
+    <img src="{{url}}{{movie.attributes.poster.data.attributes.formats.small.url}}">
     <table>
     <tr>
     <th>Genres</th>

@@ -50,11 +50,11 @@ function buttonHandler(buttonid, buttonType){
     let button=document.getElementById(buttonid)
     let data = []
     button.onclick = function () {
-        if (buttonType === 'Watched' || buttonType === 'S2'){
+        if (buttonType === 'A1' || buttonType === 'A2'){
             data = getMoviesInSession(buttonType)
-        } else if (buttonType === 'All'){
+        } else if (buttonType === 'A3'){
             data = getMovies()
-        } else if (buttonType === 'Sorted'){
+        } else if (buttonType === 'A4'){
             data = sortMovies()
         }
         movieListView('content', data)
@@ -63,48 +63,39 @@ function buttonHandler(buttonid, buttonType){
 }
 
 function bindings(){
-    buttonHandler('action1','S1')
-    buttonHandler('action2','S2')
-    buttonHandler('action3','All')
-    buttonHandler('action4','Sorted')
+    buttonHandler('action1','A1')
+    buttonHandler('action2','A2')
+    buttonHandler('action3','A3')
+    buttonHandler('action4','A4')
 }
 
 const btn = document.querySelector('button');
 
 function sendData( data ) {
   console.log( 'Sending data' );
-
   const XHR = new XMLHttpRequest();
-
   let urlEncodedData = "",
       urlEncodedDataPairs = [],
       name;
-
   // Turn the data object into an array of URL-encoded key/value pairs.
   for( name in data ) {
     urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
   }
-
   // Combine the pairs into a single string and replace all %-encoded spaces to
   // the '+' character; matches the behavior of browser form submissions.
   urlEncodedData = urlEncodedDataPairs.join( '&' ).replace( /%20/g, '+' );
-
   // Define what happens on successful data submission
   XHR.addEventListener( 'load', function(event) {
     alert( 'Yeah! Data sent and response loaded.' );
   } );
-
   // Define what happens in case of error
   XHR.addEventListener( 'error', function(event) {
     alert( 'Oops! Something went wrong.' );
   } );
-
   // Set up our request
   XHR.open( 'POST', 'https://example.com/cors.php' );
-
   // Add the required HTTP header for form data POST requests
   XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
-
   // Finally, send our data.
   XHR.send( urlEncodedData );
 }
@@ -124,6 +115,8 @@ const redraw = () => {
     }else if (pathInfo.path === "movies") {
         if (pathInfo.id){
             const movie = getMovie(pathInfo.id)
+            console.log(pathInfo)
+            console.log(movie)
             movieView('content',movie)
         } else{
             const bmovies = getMovies()

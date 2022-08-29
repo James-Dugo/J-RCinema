@@ -35,12 +35,12 @@
       "required": true,
       "type": "integer"
     },
-    "genres": {
-      "type": "string"
-    },
     "rating": {
       "type": "boolean",
       "required": false
+    },
+    "genres": {
+      "type": "json"
     }
   }
 }
