@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "watchlist-webapp",
+  "workspaces": [
+    "database"
+  ],
+  "packageManager": "yarn@1.22.1"
+}
