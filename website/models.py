@@ -6,7 +6,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(256))
-    watched_movies = db.relationship("Movie")
+    data = db.relationship("Rating")
 
 class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,8 +19,8 @@ class Movie(db.Model):
     synopsis = db.Column(db.String(10000))
 
 class Rating(db.Model):
-    movie_id = db.Column(db.Integer, db.ForeignKey("movie.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    movie_id = db.Column(db.Integer, db.ForeignKey("movie.id"),primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"),primary_key=True)
     rating = db.Column(db.Integer)
 
 
