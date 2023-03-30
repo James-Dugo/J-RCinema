@@ -12,7 +12,6 @@ class Movie(db.Model):
     title = db.Column(db.String(300))
     year = db.Column(db.Integer)
     genre = db.Column(db.String(60))
-    ratings = db.relationship("Data")
     poster = db.Column(db.String(100))
     synopsis = db.Column(db.String(10000))
     watched = db.Column(db.Boolean())

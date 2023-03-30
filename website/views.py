@@ -38,7 +38,7 @@ def add_movie():
         print("genre: "+genre)
         print("poster: "+poster)
         print("synopsis: "+synopsis)
-    return render_template("movie-entry.html", user=current_user)
+    return render_template("manual-movie-entry.html", user=current_user)
 
 @views.route('/delete-movie', methods=['POST'])
 def delete_movie():
