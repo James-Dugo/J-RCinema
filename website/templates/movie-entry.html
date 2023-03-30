@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">
+    <h3 align="center">New Movie</h3>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="Movie Title..."
+        />
+    </div>
+    <div class="form-group">
+        <label for="year">Year</label>
+        <input
+            type="number"
+            class="form-control"
+            id="year"
+            name="year"
+            placeholder="2010..."
+        />
+    </div>
+    <div class="form-group">
+        <label for="genre">Genres</label>
+        <fieldset>
+            <legend>Genres:</legend>
+            <div>
+                <input type="checkbox" id="action" name="genre" value="action" />
+                <label for="action">Action</label>
+            </div>
+            <div>
+                <input type="checkbox" id="adventure" name="genre" value="adventure" />
+                <label for="adventure">Adventure</label>
+            </div>
+            <div>
+                <input type="checkbox" id="comedy" name="genre" value="comedy" />
+                <label for="comedy">Comedy</label>
+            </div>
+            <div>
+                <input type="checkbox" id="crime" name="genre" value="crime" />
+                <label for="crime">Crime</label>
+            </div>
+            <div>
+                <input type="checkbox" id="action" name="drama" value="drama" />
+                <label for="drama">Drama</label>
+            </div>
+            <div>
+                <input type="checkbox" id="fantasy" name="genre" value="fantasy" />
+                <label for="fantasy">Fantasy</label>
+            </div>
+            <div>
+                <input type="checkbox" id="historical" name="genre" value="historical" />
+                <label for="historical">Historical</label>
+            </div>
+            <div>
+                <input type="checkbox" id="horror" name="genre" value="horror" />
+                <label for="horror">Horror</label>
+            </div>
+            <div>
+                <input type="checkbox" id="musical" name="genre" value="musical" />
+                <label for="musical">Musical</label>
+            </div>
+            <div>
+                <input type="checkbox" id="noir" name="genre" value="noir" />
+                <label for="noir">Noir</label>
+            </div>
+            <div>
+                <input type="checkbox" id="romance" name="genre" value="romance" />
+                <label for="romance">Romance</label>
+            </div>
+            <div>
+                <input type="checkbox" id="science-fiction" name="genre" value="science-fiction" />
+                <label for="science-fiction">Science fiction</label>
+            </div>
+            <div>
+                <input type="checkbox" id="thriller" name="genre" value="thriller" />
+                <label for="thriller">Thriller</label>
+            </div>
+            <div>
+                <input type="checkbox" id="western" name="genre" value="western" />
+                <label for="western">Western</label>
+            </div>
+    </fieldset>
+    </div>
+    <div class="form-group">
+        <label for="poster">Poster</label>
+        <input
+            type="file"
+            class="form-control"
+            id="poster"
+            name="poster"
+            accept="image/png, image/jpeg"
+        />
+    </div>
+    <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <textarea
+            class="form-control"
+            id="synopsis"
+            name="synopsis"
+        ></textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+{% endblock %}
