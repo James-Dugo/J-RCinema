@@ -14,6 +14,7 @@ class Movie(db.Model):
     genre = db.Column(db.String(60))
     poster = db.Column(db.String(100))
     synopsis = db.Column(db.String(10000))
+    rating = db.Column(db.Integer)
     watched = db.Column(db.Boolean())
 
 
