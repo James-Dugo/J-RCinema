@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, url_for
 from flask_login import login_required, current_user
-from .models import Movie, User
+from .models import Movie
+from .tmdbRequester import newMovie, searchForMovie
 from . import db
 import json
 
@@ -20,9 +21,18 @@ def reset():
     db.drop_all()
     db.create_all()
 
-@views.route("/add-movie", methods=["GET", "POST"])
+@views.route("/admin/new-movie", methods=["GET", "POST"])
 @login_required
-def add_movie():
+def new_movie():
+    if request.method == "POST":
+        response = searchForMovie(request.form.get("title"))
+        print(response)
+        return render_template("confirmation.html", response=response, user=current_user)
+    return render_template("tmdb-request.html", user=current_user)
+
+@views.route("/test-movie", methods=["GET", "POST"])
+@login_required
+def test_movie():
     if request.method == "POST":
         title = request.form.get("title")
         year = request.form.get("year")

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Confirm selection</h3>
+
+<form method="POST">
+    <h3 align="center">New Movie</h3>
+    <div class="form-group">
+      <label for="title">Movie Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Movie Title"
+      />
+    </div>
+    <br />
+    <button type"submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<ul>
+{% for i in response["results"] %}
+    <li>
+        {{i["title"]}}
+        <img src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/>
+    </li>
+{% endfor %}
+</ul>
+
+
+
+{% endblock %}

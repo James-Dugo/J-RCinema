@@ -1,3 +1,5 @@
+from flask import flash, render_template
+from flask_login import current_user
 import requests, shutil
 from .models import Movie
 from PIL import Image
@@ -11,14 +13,12 @@ CONFIG=requests.get(CONFIG_API_URL).json()
 SIZES=CONFIG["images"]["poster_sizes"]
 DEFAULT_SIZE="w780"
 
-#may need verification for malformed queries
+#may need verification for queries
 def searchForMovie(query):
     url=BASE_MOVIE_SEARCH_URL+query
     response=requests.get(url).json()
     if response:
-        movie=response['results'][0]
-        movie_details=detailsForMovie(movie["id"])
-    return movie_details
+        return  response
 
 def detailsForMovie(id):
     url=BASE_MOVIE_API_URL+str(id)+f'?api_key={API_KEY}&language=en-US'
@@ -36,9 +36,9 @@ def urlForPoster(poster_path,size):
 
 def filePathFor(title,size):
     if size in SIZES:
-        image_path=f"./moviePosters/{size}/{title}.jpg"
+        image_path=f"/static/moviePosters/{size}/{title}.jpg"
     else:
-        image_path=f"./moviePosters/w780/{title}.jpg"
+        image_path=f"/static/moviePosters/w780/{title}.jpg"
     return image_path
 
 
@@ -61,8 +61,8 @@ def translateGenres(tmdb_movie):
         if flag:
             flag=False
         else:
-            genre_string.append(", ")
-        genre_string.append(data["name"])
+            genre_string+=", "
+        genre_string+=data["name"]
     return genre_string
 
 

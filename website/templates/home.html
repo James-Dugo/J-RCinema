@@ -5,7 +5,7 @@
     {% for movie in movies %}
     <ul class="list-group list-group-flush" id="movie">
         <li class="list-group-item" id="movie-title">{{ movie.title }}</li>
-        <li class="list-group-item" id="movie-poster"><img src="/static/Movie Posters/{{ movie.poster }}" width="486" height="720"></li>
+        <li class="list-group-item" id="movie-poster"><img src="{{ movie.poster }}" width="780"></li>
     </ul>
     {% endfor %}
 </ul>
