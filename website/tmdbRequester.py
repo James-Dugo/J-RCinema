@@ -28,14 +28,11 @@ def detailsForMovie(id):
     return movie
 
 def urlForPoster(poster_path,size):
-    if size in SIZES:
-        url=f'{CONFIG["images"]["secure_base_url"]}{size}/{poster_path}'
-    else:
-        url=f'{CONFIG["images"]["secure_base_url"]}w780/{poster_path}'
+    url=f'{CONFIG["images"]["secure_base_url"]}w780/{poster_path}'
     return url
 
 def filePathFor(title,size):
-    image_path=f"D:\Git\J-RCinema\website\static\moviePosters\w780\{title}.jpg"
+    image_path=f"./website/static/moviePosters/w780/{title}.jpg"
     return image_path
 
 def savePoster(url,file_path):
@@ -73,7 +70,7 @@ def newMovie(tmdb_movie):
     movie=Movie(title=tmdb_movie["title"],
                 year=tmdb_movie["release_date"].split('-')[0],
                 genre=genre_string,
-                poster=local_file_path,
+                poster=f"./static/moviePosters/w780/{tmdb_movie['title']}.jpg",
                 synopsis=tmdb_movie["overview"],
                 watched=False
                 )

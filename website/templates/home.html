@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {%block content%}
 <h1 align="center">Welcome to J&R's Cinema</h1>
-<ul class="list-group list-group-flush" id="movies">
+<ul class="list-group list-group-horizontal d-flex" id="movies">
     {% for movie in movies %}
-    <ul class="list-group list-group-flush" id="movie">
-        <li class="list-group-item" id="movie-title">{{ movie.title }}</li>
-        <li class="list-group-item" id="movie-poster"><img src="{{ movie.poster }}" width="780"></li>
-    </ul>
+        <li class="list-group-item " id="movie-poster">
+            <div class="d-flex w-350">
+                <figure class="figure">
+                    <img class="rounded" src="{{ movie.poster }}" width="350" >
+                    <figcaption class="figure-caption text-center">{{ movie.title }}{% block admin %}{%endblock%}</figcaption>
+                </figure>
+            </div>
+        </li>
+
     {% endfor %}
 </ul>
 {%endblock%}
