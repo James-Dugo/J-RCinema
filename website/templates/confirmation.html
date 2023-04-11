@@ -23,8 +23,7 @@
 <ul>
 {% for i in response["results"] %}
     <li>
-        {{i["title"]}}
-        <img src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/>
+        <a href="/admin/new-movie/?id={{i["id"]}}"><img src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/></a>
     </li>
 {% endfor %}
 </ul>

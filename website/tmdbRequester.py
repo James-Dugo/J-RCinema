@@ -35,12 +35,8 @@ def urlForPoster(poster_path,size):
     return url
 
 def filePathFor(title,size):
-    if size in SIZES:
-        image_path=f"/static/moviePosters/{size}/{title}.jpg"
-    else:
-        image_path=f"/static/moviePosters/w780/{title}.jpg"
+    image_path=f"D:\Git\J-RCinema\website\static\moviePosters\w780\{title}.jpg"
     return image_path
-
 
 def savePoster(url,file_path):
     """saves an image from the given url to the given filepath

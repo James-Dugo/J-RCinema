@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request, flash, jsonify, url_for
+from flask import Blueprint, redirect, render_template, request, flash, jsonify, url_for
 from flask_login import login_required, current_user
 from .models import Movie
-from .tmdbRequester import newMovie, searchForMovie
+from .tmdbRequester import newMovie, searchForMovie, detailsForMovie
 from . import db
 import json
 
@@ -25,10 +25,23 @@ def reset():
 @login_required
 def new_movie():
     if request.method == "POST":
-        response = searchForMovie(request.form.get("title"))
-        print(response)
+        query=request.form.get("title")
+        response = searchForMovie(query)
         return render_template("confirmation.html", response=response, user=current_user)
     return render_template("tmdb-request.html", user=current_user)
+
+@views.route("/admin/new-movie/", methods=["GET","POST"])
+@login_required
+def movie_confirmed():
+    movie=detailsForMovie(request.args.get("id"))
+    if "success" in movie:
+        flash("something went wrong",category="error")
+    else:
+        my_movie=newMovie(movie)
+        db.session.add(my_movie)
+        db.session.commit()
+        flash(f'{movie["original_title"]} added successfully',category="success")
+    return redirect(url_for("views.new_movie"))
 
 @views.route("/test-movie", methods=["GET", "POST"])
 @login_required
