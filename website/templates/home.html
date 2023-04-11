@@ -1,17 +1,20 @@
 {% extends "base.html" %}
+{%block container%}
+<div class="container-fluid">
 {%block content%}
 <h1 align="center">Welcome to J&R's Cinema</h1>
-<ul class="list-group list-group-horizontal d-flex" id="movies">
+<div class="">
+<ul class="list-group list-group-horizontal d-flex justify-content-center flex-wrap" id="movies">
     {% for movie in movies %}
-        <li class="list-group-item " id="movie-poster">
-            <div class="d-flex w-350">
-                <figure class="figure">
-                    <img class="rounded" src="{{ movie.poster }}" width="350" >
-                    <figcaption class="figure-caption text-center">{{ movie.title }}{% block admin %}{%endblock%}</figcaption>
-                </figure>
-            </div>
+        <li class="list-group-item" id="movie-poster">
+            <figure class="figure">
+                <img class="rounded" src="{{ movie.poster }}" width="350" >
+                <!-- <figcaption class="figure-caption text-center">{{ movie.title }}{% block admin %}{%endblock%}</figcaption> -->
+            </figure>
         </li>
-
     {% endfor %}
 </ul>
+</div>
+{%endblock%}
+</div>
 {%endblock%}

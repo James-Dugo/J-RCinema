@@ -1,35 +1,14 @@
-{% extends "base.html" %}
+{% extends "tmdb-request.html" %}
 
-{% block content %}
-<h3>Confirm selection</h3>
-
-<form method="POST">
-    <h3 align="center">New Movie</h3>
-    <div class="form-group">
-      <label for="title">Movie Title</label>
-      <input
-        type="text"
-        class="form-control"
-        id="title"
-        name="title"
-        placeholder="Movie Title"
-      />
-    </div>
-    <br />
-    <button type"submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-<ul>
+{% block confirm %}
+<br />
+<ul class="list-group list-group-horizontal d-flex flex-wrap">
 {% for i in response["results"] %}
-    <li>
+    <li class="list-group-item">
         <a href="/admin/new-movie/?id={{i["id"]}}">
-          <img class="img-thumbnail float-start" src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/>
+          <img class="rounded" src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/>
         </a>
     </li>
 {% endfor %}
 </ul>
-
-
-
 {% endblock %}
