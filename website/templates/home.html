@@ -1,20 +1,15 @@
 {% extends "base.html" %}
-{%block container%}
-<div class="container-fluid">
-{%block content%}
-<h1 align="center">Welcome to J&R's Cinema</h1>
-<div class="">
-<ul class="list-group list-group-horizontal d-flex justify-content-center flex-wrap" id="movies">
-    {% for movie in movies %}
-        <li class="list-group-item" id="movie-poster">
-            <figure class="figure">
-                <img class="rounded" src="{{ movie.poster }}" width="350" >
-                <!-- <figcaption class="figure-caption text-center">{{ movie.title }}{% block admin %}{%endblock%}</figcaption> -->
-            </figure>
-        </li>
-    {% endfor %}
-</ul>
+{% block content %}
+<br/>
+<div class="text-center" id="logo">
+    <img class="rounded" src="./static/Logo5.png"/ width="150px" height="auto">
 </div>
-{%endblock%}
+<div class="d-flex position-relative" id="database">
+    <h3>The Database</h3>
+    <a href="{{url_for('views.movies')}}" class="stretched-link"></a>
 </div>
-{%endblock%}
+<div class="" id="description">
+    <p1>The description of what's happening on this website</p1>
+</div>
+
+{% endblock %}

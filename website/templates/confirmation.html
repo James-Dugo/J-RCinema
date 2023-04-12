@@ -3,11 +3,15 @@
 {% block confirm %}
 <br />
 <ul class="list-group list-group-horizontal d-flex flex-wrap">
-{% for i in response["results"] %}
+{% for i in response["results"][0:10] %}
     <li class="list-group-item">
-        <a href="/admin/new-movie/?id={{i["id"]}}">
-          <img class="rounded" src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/>
-        </a>
+      <div class="w-154">
+        <figure class="figure">
+          <a href="/admin/new-movie/?id={{i["id"]}}">
+            <img class="rounded" src="https://image.tmdb.org/t/p/original/{{i["poster_path"]}}" width="154"/>
+          </a>
+          <figcaption class="figure-caption text-center text-wrap">{{ i["title"] }} ({{ i["release_date"]}})</figcaption>
+        </div>
     </li>
 {% endfor %}
 </ul>

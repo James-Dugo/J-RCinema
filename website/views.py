@@ -9,11 +9,12 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
+    return render_template("home.html", user=current_user)
+
+@views.route('/movies')
+def movies():
     movies=Movie.query.all()
-    if movies:
-        return render_template("home.html", user=current_user, movies=movies)
-    else:
-        return render_template("home.html", user=current_user)
+    return render_template("movies.html",user=current_user, movies=movies)
 
 @views.route('/reset')
 @login_required
